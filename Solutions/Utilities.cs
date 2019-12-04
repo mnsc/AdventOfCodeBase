@@ -103,6 +103,22 @@ namespace AdventOfCode.Solutions {
             first = list.Count > 0 ? list[0] : default(T); // or throw
             second = list.Count > 1 ? list[1] : default(T); // or throw
             rest = list.Skip(2).ToList();
+
+        /// <summary>
+        /// U100 => ("U", 100)
+        /// Alpha1234 => ("Alpha", 1234)
+        /// </summary>
+        public static (string String, int Int) GetStringIntTuple(this string combined, bool toLower = false)
+        {
+            return (
+                string.Join(string.Empty,
+                combined
+                .Where(c => char.IsLetter(c))
+                .Select(c => toLower ? Char.ToLowerInvariant(c) : c)),
+                int.Parse(string.Join(string.Empty,
+                combined
+                .Where(c => !char.IsLetter(c))))
+                );
         }
     }
 }
