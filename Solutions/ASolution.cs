@@ -58,7 +58,7 @@ namespace AdventOfCode.Solutions {
         }
 
         string LoadInput() {
-            string INPUT_FILEPATH = $"./Solutions/Year{Year}/Day{Day.ToString("D2")}/input";
+            string INPUT_FILEPATH = $"./Solutions/Year{Year}/Day{Day.ToString("D2")}/input.txt";
             string INPUT_URL = $"https://adventofcode.com/{Year}/day/{Day}/input";
             string input = "";
 
@@ -69,6 +69,7 @@ namespace AdventOfCode.Solutions {
                     using(var client = new WebClient()) {
                         client.Headers.Add(HttpRequestHeader.Cookie, Program.Config.Cookie);
                         input = client.DownloadString(INPUT_URL).Trim();
+                        Directory.CreateDirectory(Path.GetDirectoryName(INPUT_FILEPATH));
                         File.WriteAllText(INPUT_FILEPATH, input);
                     }
                 } catch(WebException e) {
