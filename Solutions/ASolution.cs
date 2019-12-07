@@ -32,7 +32,7 @@ namespace AdventOfCode.Solutions {
             string output = $"--- Day {Day}: {Title} --- \n";
             if(DebugInput != null)
             {
-                output+= $"!!! DebugInput used: {DebugInput}\n";
+                output += $"\n    !!! DEBUGINPUT USED: {DebugInput}  !!! \n\n";
             }
 
             if(part != 2) {
