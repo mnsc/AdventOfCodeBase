@@ -6,8 +6,9 @@ namespace AdventOfCode.Solutions.Year2019
 {
     public static class IntCodeComputer
     {
-        public static int RunOnMemory(int[] program, int? input = null)
+        public static List<int> RunOnMemory(int[] program, int? input = null)
         {
+            var returns = new List<int>();
             int headPos = 0;
             while (program[headPos] != 99)
             {
@@ -28,13 +29,20 @@ namespace AdventOfCode.Solutions.Year2019
                         move = 2;
                         break;
                     case 4: // output
-                        return program[program[headPos + 1]];
+                        returns.Add(program[program[headPos + 1]]);
+                        move = 2;
+                        break;
                     default:
                         throw new System.Exception("💥");
                 }
                 headPos += move;
             }
-            return -1;
+            return returns;
+        }
+
+        private static object List<T>()
+        {
+            throw new NotImplementedException();
         }
     }
 }

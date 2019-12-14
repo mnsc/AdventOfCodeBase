@@ -47,8 +47,8 @@ namespace AdventOfCode
             var memory = new int[] { 3, 0, 4, 0, 99 };
             int input = 44;
 
-            int? output = IntCodeComputer.RunOnMemory(memory, input);
-            Assert.Equal(input, output);
+            var output = IntCodeComputer.RunOnMemory(memory, input);
+            Assert.Equal(input, output[0]);
         }
 
     }
