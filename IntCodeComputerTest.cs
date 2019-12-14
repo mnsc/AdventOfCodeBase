@@ -68,6 +68,14 @@ namespace AdventOfCode
             IntCodeComputer.RunOnMemory(memory);
             Assert.Equal(memory, desiredEndState);
         }
+        [Fact]
+        public void Param_for_output_instruction_can_have_immediate_mode()
+        {
+            var memory = new int[] { 1, 0, 0, 0, 104, 0, 99 };
+            
+            var outputs = IntCodeComputer.RunOnMemory(memory);
+            Assert.Equal(0, outputs[0]);
+        }
 
     }
 

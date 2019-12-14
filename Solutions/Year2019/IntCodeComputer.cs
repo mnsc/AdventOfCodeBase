@@ -60,7 +60,8 @@ namespace AdventOfCode.Solutions.Year2019
                         move = 2;
                         break;
                     case 4: // output
-                        returns.Add(program[program[headPos + 1]]);
+                        param1 = modeParam1 == ParameterMode.Position ? program[program[headPos + 1]] : program[headPos + 1];
+                        returns.Add(param1);
                         move = 2;
                         break;
                     default:
