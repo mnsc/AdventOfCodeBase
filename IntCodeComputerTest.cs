@@ -77,6 +77,29 @@ namespace AdventOfCode
             Assert.Equal(0, outputs[0]);
         }
 
+
+        [Theory]
+        [InlineData(
+            new int[] { 3, 12, 6, 12, 15, 1, 13, 14, 13, 4, 13, 99, -1, 0, 1, 9 },
+            1, 1)]
+        [InlineData(
+            new int[] { 3, 3, 1105, -1, 9, 1101, 0, 0, 12, 4, 12, 99, 1 },
+            1, 1)] 
+        [InlineData(
+            new int[] { 3, 12, 6, 12, 15, 1, 13, 14, 13, 4, 13, 99, -1, 0, 1, 9 },
+            0, 0)]
+        [InlineData(
+            new int[] { 3, 3, 1105, -1, 9, 1101, 0, 0, 12, 4, 12, 99, 1 },
+            0, 0)]
+       
+        public void JumpTrueNotTrue(int[] memory, int input, int expectedOutput)
+        {
+            var outputs = IntCodeComputer.RunOnMemory(memory, input);
+
+            Assert.Equal(expectedOutput, outputs[0]);
+        }
+
+        
     }
 
 }
