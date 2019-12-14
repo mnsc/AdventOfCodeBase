@@ -6,29 +6,35 @@ namespace AdventOfCode.Solutions.Year2019
 {
     public static class IntCodeComputer
     {
-        public static void RunOnMemory(int[] program)
+        public static int RunOnMemory(int[] program, int? input = null)
         {
             int headPos = 0;
             while (program[headPos] != 99)
             {
-
                 int instruction = program[headPos];
-                int firstParam = program[program[headPos + 1]];
-                int secondParam = program[program[headPos + 2]];
-                int storePos = program[headPos + 3];
+                int move;
                 switch (instruction)
                 {
                     case 1: // addition
-                        program[storePos] = firstParam + secondParam;
+                        program[program[headPos + 3]] = program[program[headPos + 1]] + program[program[headPos + 2]];
+                        move = 4;
                         break;
                     case 2: // mult
-                        program[storePos] = firstParam * secondParam;
+                        program[program[headPos + 3]] = program[program[headPos + 1]] * program[program[headPos + 2]];
+                        move = 4;
                         break;
+                    case 3: // store from input
+                        program[program[headPos + 1]] = input.Value;
+                        move = 2;
+                        break;
+                    case 4: // output
+                        return program[program[headPos + 1]];
                     default:
                         throw new System.Exception("💥");
                 }
-                headPos += 4;
+                headPos += move;
             }
+            return -1;
         }
     }
 }

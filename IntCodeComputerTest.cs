@@ -30,7 +30,26 @@ namespace AdventOfCode
             Assert.Equal(memory, desiredEndState);
         }
 
-       
+        [Fact]
+        public void Opcode3FromInput()
+        {
+            var memory = new int[] { 3, 0, 99 };
+            int input = 44;
+            var desiredEndState = new int[] { 44, 0, 99 };
+
+            IntCodeComputer.RunOnMemory(memory, input);
+            Assert.Equal(memory, desiredEndState);
+        }
+
+        [Fact]
+        public void Opcode4GetOutput()
+        {
+            var memory = new int[] { 3, 0, 4, 0, 99 };
+            int input = 44;
+
+            int? output = IntCodeComputer.RunOnMemory(memory, input);
+            Assert.Equal(input, output);
+        }
 
     }
 
