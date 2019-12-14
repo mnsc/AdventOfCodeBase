@@ -63,7 +63,7 @@ namespace AdventOfCode
         public void Negative_values_is_ok()
         {
             var memory = new int[] { 1101, 100, -1, 4, 0 };
-            var desiredEndState = new int[] { 1101, 100, -1, 4, 0 };
+            var desiredEndState = new int[] { 1101, 100, -1, 4, 99 };
 
             IntCodeComputer.RunOnMemory(memory);
             Assert.Equal(memory, desiredEndState);
