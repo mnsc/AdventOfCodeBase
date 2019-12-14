@@ -50,6 +50,24 @@ namespace AdventOfCode
             var output = IntCodeComputer.RunOnMemory(memory, input);
             Assert.Equal(input, output[0]);
         }
+           [Fact]
+        public void Parameters_kan_have_different_modes_modes()
+        {
+            var memory = new int[] { 1002, 4, 3, 4, 33 };
+            var desiredEndState = new int[] { 1002, 4, 3, 4, 99 };
+
+            IntCodeComputer.RunOnMemory(memory);
+            Assert.Equal(memory, desiredEndState);
+        }
+        [Fact]
+        public void Negative_values_is_ok()
+        {
+            var memory = new int[] { 1101, 100, -1, 4, 0 };
+            var desiredEndState = new int[] { 1101, 100, -1, 4, 0 };
+
+            IntCodeComputer.RunOnMemory(memory);
+            Assert.Equal(memory, desiredEndState);
+        }
 
     }
 
