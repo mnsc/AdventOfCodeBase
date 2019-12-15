@@ -17,12 +17,19 @@ namespace AdventOfCode.Solutions.Year2019
 
             var outputs = IntCodeComputer.RunOnMemory(program, 1);
 
-            return "\nDebug outputs: " + (string.Join(", ", outputs.Take(outputs.Count - 1).Select(x => x.ToString()))) + "\nFinal output is: "  + outputs[outputs.Count - 1].ToString();
+            return 
+                "\nDebug outputs: " + (string.Join(", ", outputs.Take(outputs.Count - 1).Select(x => x.ToString()))) + 
+                "\nDiagnostic code is: " + outputs[outputs.Count - 1].ToString();
         }
 
         protected override string SolvePartTwo()
         {
-            return null;
+            var program = Input.ToIntArray(",");
+
+            var outputs = IntCodeComputer.RunOnMemory(program, 5);
+
+            return "Diagnostic code is: " + outputs[0].ToString();
+
         }
     }
 }
