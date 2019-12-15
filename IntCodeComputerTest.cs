@@ -122,6 +122,28 @@ namespace AdventOfCode
             var outputs = IntCodeComputer.RunOnMemory(memory, input);
 
             Assert.Equal(expectedOutput, outputs[0]);
+        }  
+        
+        [Theory]
+        [InlineData(
+            new int[] { 3, 9, 7, 9, 10, 9, 4, 9, 99, -1, 8 },
+            4, 1)]
+        [InlineData(
+            new int[] { 3, 9, 7, 9, 10, 9, 4, 9, 99, -1, 8 },
+            8, 0)]
+        [InlineData(
+            new int[] { 3, 3, 1107, -1, 8, 3, 4, 3, 99 },
+            4, 1)]
+        [InlineData(
+            new int[] { 3, 3, 1107, -1, 8, 3, 4, 3, 99 },
+            8, 0)]
+        
+
+        public void Check_if_input_is_less_than_8(int[] memory, int input, int expectedOutput)
+        {
+            var outputs = IntCodeComputer.RunOnMemory(memory, input);
+
+            Assert.Equal(expectedOutput, outputs[0]);
         }
 
     }
