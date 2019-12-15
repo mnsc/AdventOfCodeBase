@@ -99,7 +99,31 @@ namespace AdventOfCode
             Assert.Equal(expectedOutput, outputs[0]);
         }
 
+
+
+
+        [Theory]
+        [InlineData(
+            new int[] { 3, 9, 8, 9, 10, 9, 4, 9, 99, -1, 8 },
+            8, 1)]
+        [InlineData(
+            new int[] { 3, 9, 8, 9, 10, 9, 4, 9, 99, -1, 8 },
+            88, 0)]
+        [InlineData(
+            new int[] { 3, 3, 1108, -1, 8, 3, 4, 3, 99 },
+            8, 1)]
+        [InlineData(
+            new int[] { 3, 3, 1108, -1, 8, 3, 4, 3, 99 },
+            88, 0)]
         
+
+        public void Check_if_input_is_8(int[] memory, int input, int expectedOutput)
+        {
+            var outputs = IntCodeComputer.RunOnMemory(memory, input);
+
+            Assert.Equal(expectedOutput, outputs[0]);
+        }
+
     }
 
 }

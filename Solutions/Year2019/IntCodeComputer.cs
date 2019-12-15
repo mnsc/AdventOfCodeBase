@@ -64,7 +64,7 @@ namespace AdventOfCode.Solutions.Year2019
                         returns.Add(param1);
                         move = 2;
                         break;
-                    case 5: // 
+                    case 5: // truthy
                         param1 = modeParam1 == ParameterMode.Position ? program[program[instructionPointer + 1]] : program[instructionPointer + 1];
                         param2 = modeParam2 == ParameterMode.Position ? program[program[instructionPointer + 2]] : program[instructionPointer + 2];
                         if (param1 != 0)
@@ -78,7 +78,7 @@ namespace AdventOfCode.Solutions.Year2019
                         }
 
                         break;
-                    case 6: // 
+                    case 6: // false
                         param1 = modeParam1 == ParameterMode.Position ? program[program[instructionPointer + 1]] : program[instructionPointer + 1];
                         param2 = modeParam2 == ParameterMode.Position ? program[program[instructionPointer + 2]] : program[instructionPointer + 2];
                         if (param1 == 0)
@@ -91,6 +91,13 @@ namespace AdventOfCode.Solutions.Year2019
                             move = 3;
                         }
 
+                        break;
+                    case 8: // equals
+                        param1 = modeParam1 == ParameterMode.Position ? program[program[instructionPointer + 1]] : program[instructionPointer + 1];
+                        param2 = modeParam2 == ParameterMode.Position ? program[program[instructionPointer + 2]] : program[instructionPointer + 2];
+
+                        program[program[instructionPointer + 3]] = param1 == param2 ? 1 : 0;
+                        move = 4;
                         break;
                     default:
                         throw new System.Exception("💥");
